@@ -1,4 +1,4 @@
-// DOM
+// DOM/Browser/Client - same same
 export default function RandomDog({ imgUrl }) {
     return (
         <>
@@ -8,7 +8,7 @@ export default function RandomDog({ imgUrl }) {
     );
 }
 
-// BACKEND
+// BACKEND/Server
 export async function getServerSideProps() {
     const api = "https://dog.ceo/api/breeds/image/random";
     const res = await fetch(api);

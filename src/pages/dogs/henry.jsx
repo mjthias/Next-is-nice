@@ -1,16 +1,34 @@
 import Image from "next/image";
+import Head from "next/head";
 
-export default function Henry() {
+export default function Henry({ data }) {
+    const { content } = data;
     return (
         <>
-            <h1>Henry page</h1>
+            <Head>
+                <title>{data.title}</title>
+            </Head>
+            <h1>{content.heading}</h1>
+            <p>{content.text}</p>
             <Image
-                src='https://images.unsplash.com/photo-1583511655857-d19b40a7a54e'
-                alt='Cute dog'
-                width='4240'
-                height='2832'
+                src={content.image.src}
+                alt={content.image.alt}
+                width={content.image.width}
+                height={content.image.height}
                 sizes='(max-width: 750px) 100vw, 750px'
             />
         </>
     );
+}
+
+export async function getStaticProps() {
+    const api = "https://bucolic-bombolone-857476.netlify.app/api/dogs/henry";
+    const res = await fetch(api);
+    const data = await res.json();
+
+    return {
+        props: {
+            data: data,
+        },
+    };
 }
