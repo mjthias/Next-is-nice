@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Head from "next/head";
+import Image from "next/image";
 
-export default function Henry({ data }) {
+export default function Dogs({ data }) {
     const { content } = data;
     return (
         <>
@@ -21,9 +21,17 @@ export default function Henry({ data }) {
     );
 }
 
-export async function getStaticProps() {
-    const api = "https://bucolic-bombolone-857476.netlify.app/api/dogs/henry";
+export async function getServerSideProps(context) {
+    const slug = context.params.slug;
+    const api = "https://bucolic-bombolone-857476.netlify.app/api/dogs/" + slug;
     const res = await fetch(api);
+    // If no data - no page (404)
+    if (res.status != 200) {
+        return {
+            notFound: true,
+        };
+    }
+
     const data = await res.json();
 
     return {
@@ -32,3 +40,5 @@ export async function getStaticProps() {
         },
     };
 }
+
+// /dogs/bufas and /dogs/steve
