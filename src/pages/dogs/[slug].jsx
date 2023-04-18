@@ -8,15 +8,17 @@ export default function Dogs({ data }) {
             <Head>
                 <title>{data.title}</title>
             </Head>
-            <h1>{content.heading}</h1>
-            <p>{content.text}</p>
-            <Image
-                src={content.image.src}
-                alt={content.image.alt}
-                width={content.image.width}
-                height={content.image.height}
-                sizes='(max-width: 750px) 100vw, 750px'
-            />
+            <div style={{ background: content.text.split(" ").at(-1).split(".")[0] }}>
+                <h1>{content.heading}</h1>
+                <p>{content.text}</p>
+                <Image
+                    src={content.image.src}
+                    alt={content.image.alt}
+                    width={content.image.width}
+                    height={content.image.height}
+                    sizes='(max-width: 750px) 100vw, 750px'
+                />
+            </div>
         </>
     );
 }
