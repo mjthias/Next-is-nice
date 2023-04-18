@@ -2,10 +2,10 @@ import "@/styles/globals.css";
 import App from "next/app";
 import Layout from "@/components/Layout";
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps, navData }) {
     return (
         <>
-            <Layout>
+            <Layout navData={navData}>
                 <Component {...pageProps} />
             </Layout>
         </>
