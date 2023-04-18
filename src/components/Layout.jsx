@@ -4,8 +4,13 @@ export default function Layout({ children, navData }) {
     return (
         <>
             <nav>
+                <Anchor href={"/"}>HOME</Anchor>
                 {navData.map((obj) => {
-                    return <Anchor href={"/dogs/" + obj.slug}>{obj.title}</Anchor>;
+                    return (
+                        <Anchor key={obj.id} href={"/dogs/" + obj.slug}>
+                            {obj.title}
+                        </Anchor>
+                    );
                 })}
             </nav>
             {children}
