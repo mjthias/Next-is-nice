@@ -41,7 +41,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-    const api = "https://bucolic-bombolone-857476.netlify.app/api/dogs/";
+    const api = "https://bucolic-bombolone-857476.netlify.app/api/dogs";
     const res = await fetch(api);
     const data = await res.json();
 
